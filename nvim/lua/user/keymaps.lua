@@ -20,6 +20,10 @@ vim.keymap.set('i', ',,', '<Esc>A,')
 -- Quickly clear search highlighting.
 vim.keymap.set('n', '<Leader>k', ':nohlsearch<CR>')
 
+-- Verical split and go to exploration mode
+vim.keymap.set('n', '<Leader>pv', ':Vex<CR>')
+
+
 -- Move lines up and down for MacOS
 vim.keymap.set('i', '∆', '<Esc>:move .+1<CR>==gi')
 vim.keymap.set('i', '˚', '<Esc>:move .-2<CR>==gi')
