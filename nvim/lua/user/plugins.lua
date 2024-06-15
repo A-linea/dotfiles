@@ -149,6 +149,56 @@ use({
     end,
   })
 
+-- Status Line
+use({
+    'nvim-lualine/lualine.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('lualine').setup()
+    end,
+  })
+
+--Display our buffers as tabs
+use({
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    after = 'onedark.nvim',
+    config = function()
+      require('user/plugins/bufferline')
+    end,
+  })
+
+-- Display identation lines
+use({
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('ibl').setup()
+    end,
+  })
+
+-- Add a dashboard 
+use({
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      --require('dashboard')
+      require('user/plugins/dashboard-nvim')
+    end,
+  requires = 'nvim-tree/nvim-web-devicons'
+  })
+-- Git integration.
+use({
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    require('gitsigns').setup()
+    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+    vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
+    vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
+    vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
+    vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
+  end,
+})
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
