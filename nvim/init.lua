@@ -1,5 +1,5 @@
-require('user/options')
-require('user/keymaps')
-require('user.misc')
-require('user.lazy')
+require('eugene/options')
+require('eugene/keymaps')
+require('eugene.misc')
+require('eugene.lazy')
 
