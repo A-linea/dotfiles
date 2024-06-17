@@ -74,6 +74,9 @@ return {
         hide_by_name = {
           ".git",
         },
+        always_show_by_pattern = { -- uses glob style patterns
+          ".env*",
+        },
       },
       -- follow_current_file = {
       --   enabled = true,
