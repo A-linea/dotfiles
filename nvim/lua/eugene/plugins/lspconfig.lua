@@ -17,8 +17,7 @@ return {
         height = 0.8,
       },
     })
-  require('mason-lspconfig').setup({ automatic_installation = true })
-  -- require('lspconfig').gopls.setup()
+    require('mason-lspconfig').setup({ automatic_installation = true })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -86,7 +85,7 @@ return {
           {
             name = "@vue/typescript-plugin",
             location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-            languages = {"javascript", "typescript", "vue"},
+            languages = { "javascript", "typescript", "vue" },
           },
         },
       },
@@ -155,7 +154,8 @@ return {
         }),
         null_ls.builtins.formatting.prettier.with({
           condition = function(utils)
-            return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
+            return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js',
+              'prettier.config.js' })
           end,
         }),
       },
