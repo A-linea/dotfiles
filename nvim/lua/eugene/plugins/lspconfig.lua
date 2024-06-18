@@ -18,6 +18,7 @@ return {
       },
     })
     require('mason-lspconfig').setup({ automatic_installation = true })
+    -- require('lspconfig').gopls.setup()
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
