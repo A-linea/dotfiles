@@ -26,6 +26,18 @@ require('lspconfig').volar.setup({
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 })
 
+require('lspconfig').ts_ls.setup({
+  capabilities = capabilities,
+  filetypes = { 
+    "typescript",
+    "javascript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx"
+  },
+  cmd = { "typescript-language-server", "--stdio" }
+})
+
 -- Tailwind CSS
 require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
 
@@ -37,6 +49,22 @@ require('lspconfig').jsonls.setup({
       schemas = require('schemastore').json.schemas(),
     },
   },
+})
+-- Lua
+require('lspconfig').lua_ls.setup({
+  capabilities = capabilities,
+  cmd = { "lua-language-server" },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+    }
+  }
 })
 
 require('null-ls').setup({
@@ -68,7 +96,9 @@ vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
 -- Commands
-vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
+vim.api.nvim_create_user_command('Format', function()
+  vim.lsp.buf.format()
+end, {})
 
 -- Diagnostic configuration
 vim.diagnostic.config({
