@@ -1,6 +1,13 @@
 -- Add, change, and delete surrounding text.
 
-return { 'tpope/vim-surround' }
+return {
+  'kylechui/nvim-surround',
+  version = '*',
+  event = 'VeryLazy',
+  config = function()
+    require('nvim-surround').setup({})
+  end,
+}
 --"Hello world!"
 -- to change it to
 
