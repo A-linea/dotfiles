@@ -1,12 +1,8 @@
+-- Dashboard
 
-local db = require('dashboard')
-
---dashboard.setup({
---    theme = 'hyper'
---    config = {
---  })
-
-db.setup({
+return {
+  'glepnir/dashboard-nvim',
+  opts = {
     theme = 'doom',
     config = {
       header = {
@@ -35,50 +31,25 @@ db.setup({
         '',
         '',
       },
-
       center = {
-        {
-          icon = '   ',
-          icon_hl = 'Title',
-          desc = 'New File ',
-          desc_hl = 'String',
-          key_format = ' %s', -- remove default surrounding `[]`
-          action = 'enew'
-        },
-        {
-          icon = '   ',
-          icon_hl = 'Title',
-          desc = 'Find File',
-          desc_hl = 'String',
-          key = 'f',
-          keymap = 'SPC f',
-          key_hl = 'Number',
-          key_format = ' %s', -- remove default surrounding `[]`
-          action = 'Telescope find_files'
-        },
-        {
-          icon = '   ',
-          desc = 'Recent files',
-          key = 'h',
-          keymap = 'SPC h',
-          key_format = ' %s', -- remove default surrounding `[]`
-          action = 'Telescope oldfiles'
-        },
-        {
-          icon = '󰬞   ',
-          desc = 'Find word',
-          key = 'g',
-          keymap = 'SPC g',
-          key_format = ' %s', -- remove default surrounding `[]`
-          action = 'Telescope live_grep'
-        },
+        { icon = '   ', desc = 'New file', action = 'enew' },
+        { icon = '   ', desc = 'Find file               ', key = 'Space + f', action = 'Telescope find_files' },
+        { icon = '󰑋   ', desc = 'Recent files            ', key = 'Space + h', action = 'Telescope oldfiles' },
+        { icon = '󰈭   ', desc = 'Find Word               ', key = 'Space + g', action = 'Telescope live_grep' },
       },
-
-      footer = {}  --your footer
+      footer = { '' }
+    },
+    hide = {
+      statusline = false,
+      tabline = false,
+      winbar = false,
     }
-  })
-
-vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#6272a4' })
-vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = '#f8f8f2' })
-vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#bd93f9' })
-vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#6272a4' })
+  },
+  init = function()
+    vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#6272a4' })
+    vim.api.nvim_set_hl(0, 'DashboardDesc', { fg = '#f8f8f2' })
+    vim.api.nvim_set_hl(0, 'DashboardIcon', { fg = '#bd93f9' })
+    vim.api.nvim_set_hl(0, 'DashboardKey', { fg = '#6272a4' })
+    vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#6272a4' })
+  end,
+}

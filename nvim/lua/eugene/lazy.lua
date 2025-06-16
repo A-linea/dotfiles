@@ -13,6 +13,6 @@ require("lazy").setup('eugene.plugins', {
     notify = false,
   },
   install = {
-    colorscheme = { "tokyonight", "habamax" },
+    colorscheme = { "tokyonight"},
   },
 })

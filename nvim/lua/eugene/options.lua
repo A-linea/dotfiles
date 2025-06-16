@@ -10,6 +10,7 @@ vim.opt.relativenumber = true
 
 vim.opt.title = true
 vim.opt.mouse = 'a' -- enable mouse for all modes
+vim.opt.mousemoveevent = true -- enable mouse on buffer
 vim.opt.termguicolors = true
 vim.opt.spell = true
 vim.opt.wildmode = 'longest:full,full' -- complete the longest common match, and allow tabbing the results to fully complete them
@@ -17,6 +18,10 @@ vim.opt.wildmode = 'longest:full,full' -- complete the longest common match, and
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.fillchars:append({ eob = ' '})
+vim.opt.list = true -- enable the below listchars
+vim.opt.listchars = { tab = '▸ ', trail = '·', nbsp = '␣' }
+vim.opt.breakindent = true -- maintain indent when wrapping indented lines
+vim.opt.linebreak = true -- wrap at word boundaries
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
