@@ -18,7 +18,7 @@ return {
     require('mason-lspconfig').setup({ automatic_installation = true })
     -- require('lspconfig').gopls.setup()
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- PHP
     require('lspconfig').intelephense.setup({
@@ -30,8 +30,8 @@ return {
         },
       },
       on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
         -- if client.server_capabilities.inlayHintProvider then
         --   vim.lsp.buf.inlay_hint(bufnr, true)
         -- end
@@ -127,6 +127,52 @@ return {
         }
       }
     })
+    -- local null_ls = require("null-ls")
+
+    -- null-ls
+    -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- null_ls.setup({
+    --   temp_dir = '/tmp',
+    --   sources = {
+    --     null_ls.builtins.diagnostics.eslint_d.with({
+    --       condition = function(utils)
+    --         return utils.root_has_file({ '.eslintrc.js' })
+    --       end,
+    --     }),
+    --     -- null_ls.builtins.diagnostics.phpstan, -- TODO: Only if config file
+    --     null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
+    --     null_ls.builtins.formatting.eslint_d.with({
+    --       condition = function(utils)
+    --         return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json' })
+    --       end,
+    --     }),
+    --     null_ls.builtins.formatting.pint.with({
+    --       condition = function(utils)
+    --         return utils.root_has_file({ 'vendor/bin/pint' })
+    --       end,
+    --     }),
+    --     null_ls.builtins.formatting.prettier.with({
+    --       condition = function(utils)
+    --         return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js',
+    --           'prettier.config.js' })
+    --       end,
+    --     }),
+    --   },
+    --   on_attach = function(client, bufnr)
+    --     if client.supports_method("textDocument/formatting") then
+    --       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --       vim.api.nvim_create_autocmd("BufWritePre", {
+    --         group = augroup,
+    --         buffer = bufnr,
+    --         callback = function()
+    --           vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+    --         end,
+    --       })
+    --     end
+    --   end,
+    -- })
+
+    -- require('mason-none-ls').setup({ automatic_installation = true })
 
     -- Keymaps
     vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
@@ -139,7 +185,7 @@ return {
     vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
     -- Commands
-    vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format({ timeout_ms = 5000 }) end, {})
+    -- vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format({ timeout_ms = 5000 }) end, {})
 
     -- Diagnostic configuration
     vim.diagnostic.config({
