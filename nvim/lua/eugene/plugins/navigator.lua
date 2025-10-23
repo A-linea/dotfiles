@@ -17,7 +17,10 @@ return {
         require("go").setup()
         require("navigator").setup({
             lsp_signature_help = true, -- enable ray-x/lsp_signature
-            lsp = {format_on_save = true}
+            lsp = {
+                format_on_save = true,
+                disable_lsp = 'all', -- Вимкнути автоматичне налаштування LSP, бо ми використовуємо власний lspconfig.lua
+            }
         })
     end
 }
