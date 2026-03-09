@@ -2,6 +2,7 @@
 
 return {
   'neovim/nvim-lspconfig',
+  version = 'v0.1.8', -- Pin version to avoid Neovim 0.11 deprecation warnings temporarily
   event = 'VeryLazy',
   dependencies = {
     'williamboman/mason.nvim',
@@ -78,7 +79,7 @@ return {
       capabilities = capabilities,
     })
 
-    require('lspconfig').ts_ls.setup({
+    require('lspconfig').tsserver.setup({
       init_options = {
         plugins = {
           {
@@ -175,14 +176,14 @@ return {
     -- require('mason-none-ls').setup({ automatic_installation = true })
 
     -- Keymaps
-    vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
-    vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<CR>')
-    vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
-    vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
-    vim.keymap.set('n', '<Leader>lr', ':LspRestart<CR>', { silent = true })
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-    vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+    vim.keymap.set('n', '<Leader>d', function() vim.diagnostic.open_float() end, { desc = "Diagnostics" })
+    vim.keymap.set('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', { desc = "LSP Definitions" })
+    vim.keymap.set('n', 'ga', function() vim.lsp.buf.code_action() end, { desc = "Code Action" })
+    vim.keymap.set('n', 'gi', '<Cmd>Telescope lsp_implementations<CR>', { desc = "LSP Implementations" })
+    vim.keymap.set('n', 'gr', '<Cmd>Telescope lsp_references<CR>', { desc = "LSP References" })
+    vim.keymap.set('n', '<Leader>lr', '<Cmd>LspRestart<CR>', { silent = true, desc = "LSP Restart" })
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, { desc = "Hover Documentation" })
+    vim.keymap.set('n', '<Leader>rn', function() vim.lsp.buf.rename() end, { desc = "Rename Symbol" })
 
     -- Commands
     -- vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format({ timeout_ms = 5000 }) end, {})

@@ -9,12 +9,12 @@ return {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   keys = {
-    { '<leader>f', function() require('telescope.builtin').find_files() end },
-    { '<leader>F', function() require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' }) end },
-    { '<leader>b', function() require('telescope.builtin').buffers() end },
-    { '<leader>g', function() require('telescope').extensions.live_grep_args.live_grep_args() end },
-    { '<leader>h', function() require('telescope.builtin').oldfiles() end },
-    { '<leader>s', function() require('telescope.builtin').lsp_document_symbols() end },
+    { '<leader>f', function() require('telescope.builtin').find_files() end, desc = 'Find files' },
+    { '<leader>F', function() require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' }) end, desc = 'Find all files' },
+    { '<leader>b', function() require('telescope.builtin').buffers() end, desc = 'Buffers' },
+    { '<leader>g', function() require('telescope').extensions.live_grep_args.live_grep_args() end, desc = 'Live grep' },
+    { '<leader>h', function() require('telescope.builtin').oldfiles() end, desc = 'History' },
+    { '<leader>s', function() require('telescope.builtin').lsp_document_symbols() end, desc = 'Document symbols' },
   },
   config = function()
     local actions = require('telescope.actions')

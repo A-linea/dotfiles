@@ -1,9 +1,11 @@
-vim.cmd([[
-  augroup FileTypeOverrides
-    autocmd!
-    autocmd TermOpen * setlocal nospell
-  augroup END
-]])
+vim.api.nvim_create_autocmd("TermOpen", {
+  desc = "Disable spellcheck in terminal",
+  group = vim.api.nvim_create_augroup("FileTypeOverrides", { clear = true }),
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
 
 vim.api.nvim_create_autocmd('textyankpost', {
   desc = 'highlight when yanking text',

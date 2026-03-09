@@ -4,12 +4,12 @@ return {
   'lewis6991/gitsigns.nvim',
   lazy = false,
   keys = {
-    { ']h', ':Gitsigns next_hunk<CR>'},
-    { '[h', ':Gitsigns prev_hunk<CR>'},
-    { 'gs', ':Gitsigns stage_hunk<CR>'},
-    { 'gS', ':Gitsigns undo_stage_hunk<CR>'},
-    { 'gp', ':Gitsigns preview_hunk<CR>'},
-    { 'gb', ':Gitsigns blame_line<CR>'},
+    { ']h', '<Cmd>Gitsigns next_hunk<CR>', desc = 'Next hunk' },
+    { '[h', '<Cmd>Gitsigns prev_hunk<CR>', desc = 'Prev hunk' },
+    { 'gs', '<Cmd>Gitsigns stage_hunk<CR>', desc = 'Stage hunk' },
+    { 'gS', '<Cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Undo stage hunk' },
+    { 'gp', '<Cmd>Gitsigns preview_hunk<CR>', desc = 'Preview hunk' },
+    { 'gb', '<Cmd>Gitsigns blame_line<CR>', desc = 'Blame line' },
   },
   opts = {
     preview_config = {
