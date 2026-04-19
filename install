@@ -14,12 +14,3 @@ ln -s $DOTFILES/opencode/agents
 
 rm -rf $HOME/.config/opencode/skills
 ln -s $DOTFILES/opencode/skills
-
-
-rm -rf $HOME/.pi/agent/skills
-ln -s $DOTFILES/pi/skills
-
-
-rm -rf $HOME/.pi/agent/agents
-ln -s $DOTFILES/pi/agent/agents
-

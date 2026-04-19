@@ -93,6 +93,31 @@ return {
     -- Tailwind CSS
     setup_server('tailwindcss', {
       capabilities = capabilities,
+      root_dir = function(fname)
+        local util = require('lspconfig.util')
+        local root = util.root_pattern(
+          'tailwind.config.js',
+          'tailwind.config.cjs',
+          'tailwind.config.mjs',
+          'tailwind.config.ts',
+          'postcss.config.js',
+          'postcss.config.cjs',
+          'postcss.config.mjs',
+          'postcss.config.ts'
+        )(fname)
+        
+        -- Якщо не знайдено конфігів Tailwind, пробуємо інші маркери
+        if not root then
+          root = util.root_pattern('package.json', 'node_modules', '.git')(fname)
+        end
+        
+        -- Запобігаємо запуску LSP у домашній директорії
+        if root == vim.env.HOME then
+          return nil
+        end
+        
+        return root
+      end,
     })
 
     -- JSON
