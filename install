@@ -7,3 +7,19 @@ ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
+
+rm -rf $HOME/.config/opencode/agents
+ln -s $DOTFILES/opencode/agents
+
+
+rm -rf $HOME/.config/opencode/skills
+ln -s $DOTFILES/opencode/skills
+
+
+rm -rf $HOME/.pi/agent/skills
+ln -s $DOTFILES/pi/skills
+
+
+rm -rf $HOME/.pi/agent/agents
+ln -s $DOTFILES/pi/agent/agents
+
