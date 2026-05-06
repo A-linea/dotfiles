@@ -67,6 +67,3 @@ Provide the exact Lua code. Specify which file it should go into (e.g., `lua/eug
 
 ### 3. 🔍 Перевірка (Verification)
 Provide instructions on how to reload Neovim or test the change without restarting entirely (e.g., `:source %`, `:Lazy sync`).
-
-
-=====TEST
